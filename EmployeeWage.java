@@ -6,8 +6,7 @@ public class EmployeeWage{
 	public static final int NO_OF_WORKING_DAYS = 20;
 	public static final int MAX_HOURS = 100;
 
-	public static void main (String[] args){
-		
+	public static int calEmpWage(){
 		// variables
 		int empHrs = 0;
 		int empWage = 0;
@@ -37,7 +36,14 @@ public class EmployeeWage{
 			System.out.println("Day: "+ totalDays + " Emp hour: "+ totalHrs);
 			
 		}
-		System.out.println("Total Emp Wage : " + totalEmpWage);
+		System.out.println("Total Emp Wage : " + totalEmpWage);	
+		return totalEmpWage;
+	}
+
+
+	public static void main (String[] args){
+		calEmpWage(); 
+		
 	}
 }
 
