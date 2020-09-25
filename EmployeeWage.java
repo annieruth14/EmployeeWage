@@ -2,11 +2,9 @@ public class EmployeeWage{
 	// Constants
 	public static final int IS_PART_TIME = 2;
 	public static final int IS_FULL_TIME = 1;
-	public static final int EMP_RATE_PER_HOUR = 20;
-	public static final int NO_OF_WORKING_DAYS = 20;
-	public static final int MAX_HOURS = 100;
+	
 
-	public static int calEmpWage(){
+	public static int calEmpWage(String company, int empRate, int no_of_days, int max_hrs){
 		// variables
 		int empHrs = 0;
 		int empWage = 0;
@@ -15,7 +13,7 @@ public class EmployeeWage{
 		int totalHrs = 0;
 
 		// Computation
-		while(totalDays < NO_OF_WORKING_DAYS && totalHrs <= MAX_HOURS){
+		while(totalDays < no_of_days && totalHrs <= max_hrs){
 			int empCheck = (int) Math.floor(Math.random() * 10) % 3;
 				
 			switch (empCheck) {
@@ -29,20 +27,21 @@ public class EmployeeWage{
 					empHrs = 0;
 					
 			}
-			empWage = empHrs * EMP_RATE_PER_HOUR ;			
+			empWage = empHrs * empRate ;			
 			totalEmpWage = totalEmpWage + empWage; 
 			totalDays++;
 			totalHrs = totalHrs + empHrs;
 			System.out.println("Day: "+ totalDays + " Emp hour: "+ totalHrs);
 			
 		}
-		System.out.println("Total Emp Wage : " + totalEmpWage);	
+		System.out.println("Total Emp Wage for Company "+company + " is : " +totalEmpWage);
 		return totalEmpWage;
 	}
 
 
 	public static void main (String[] args){
-		calEmpWage(); 
+		calEmpWage("Capgemini",20,2,10); 
+		calEmpWage("Reliance",10,4,20); 
 		
 	}
 }
