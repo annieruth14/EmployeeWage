@@ -48,7 +48,7 @@ public class EmpWageArray implements CompanyEmpWage{
 		
 		int totalDays = 0; 
 		int totalHrs = 0;
-		
+		System.out.println("Daily Employee Wage");
 		// Computation
 		while(totalDays < empWageArray.no_of_days && totalHrs <= empWageArray.max_hrs){
 			int empCheck = (int) Math.floor(Math.random() * 10) % 3;
@@ -68,6 +68,7 @@ public class EmpWageArray implements CompanyEmpWage{
 			
 			totalDays++;
 			totalHrs = totalHrs + empHrs;
+			
 			System.out.println("Day: "+ totalDays + " Emp hour: "+ empHrs);
 			
 		}
