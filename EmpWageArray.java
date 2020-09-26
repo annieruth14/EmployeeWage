@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class EmpWageArray implements CompanyEmpWage{
 	public static final int IS_PART_TIME = 2;
@@ -8,6 +9,8 @@ public class EmpWageArray implements CompanyEmpWage{
 	public int no_of_days;
 	public int max_hrs;
 	public int totalEmpWage;
+	public int[] totalWageArray ;
+	public int i=0;
 
 	public ArrayList<EmpWageArray> listOfComp = new ArrayList<EmpWageArray>();
 
@@ -29,16 +32,26 @@ public class EmpWageArray implements CompanyEmpWage{
 	}
 	
 	private void calEmpWage(){
+		int size = listOfComp.size();
+		
+		totalWageArray = new int[listOfComp.size()];
 		for(EmpWageArray e : listOfComp){
 			System.out.println("Company : " + e.company);
-			e.calTotalEmpWage(this.calEmpWage(e));
+			int cal = this.calEmpWage(e);
+			
+			calTotalEmpWage(cal);
 		}
+		
 	}
 
 	public void calTotalEmpWage(int totalEmpWage){
 		
 		this.totalEmpWage = totalEmpWage;
-		System.out.println("The total Employee wage = " + totalEmpWage);
+				
+		totalWageArray[i] = totalEmpWage;
+		
+		i++;
+		
 	}
 
 	private int calEmpWage(EmpWageArray empWageArray){
@@ -80,9 +93,29 @@ public class EmpWageArray implements CompanyEmpWage{
 		EmpWageArray emparray = new EmpWageArray();
 		emparray.addCompanyEmpWage("Capgemini",20,3,8);
 		
-		emparray.addCompanyEmpWage("Reliance",30,5,11);	
+		emparray.addCompanyEmpWage("Reliance",30,5,11);
+		
 		emparray.calEmpWage();
+		emparray.getTotalWage();
 	}
+
+	public void getTotalWage(){
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Do you want to compute the total wage?");
+		
+		String ans = sc.nextLine();
+		if(ans.equalsIgnoreCase("yes")){
+			System.out.println("Name the company");
+			String name = sc.nextLine();
+
+			for(int k=0;k<listOfComp.size();k++){		//traverse the list to search for company
+				if(name.equalsIgnoreCase(listOfComp.get(k).company)){
+					System.out.println("The total Employee wage of is " + totalWageArray[k]);
+			
+				}
+			}
+		}
+	}	
 }
 
 
